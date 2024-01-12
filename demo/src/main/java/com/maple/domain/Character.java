@@ -1,4 +1,4 @@
-package com.maple.CharacterInfo;
+package com.maple.domain;
 
 import lombok.Data;
 
