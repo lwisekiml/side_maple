@@ -1,6 +1,8 @@
 package com.maple.test;
 
-import com.maple.CharacterInfo.Character;
+import com.maple.domain.Character;
+import com.maple.dto.SkillInfoDto;
+import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
@@ -8,8 +10,8 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.net.URLEncoder;
-import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ApiTest {
     
@@ -20,7 +22,7 @@ public class ApiTest {
             String ocid = "";
             String date = "2023-12-21";
 
-            String urlString = "https://open.api.nexon.com/maplestory/v1/character/basic?ocid=" + ocid + "&date=" + date;
+            String urlString = "";
             URL url = new URL(urlString);
 
             // HTTP connection 설정
@@ -46,6 +48,7 @@ public class ApiTest {
             }
             in.close();
 
+            // 캐릭터 기본 정보 조회
             Character character = new Character();
 
             JSONParser jsonParser = new JSONParser();
@@ -64,6 +67,27 @@ public class ApiTest {
             character.setCharacter_image((String) jsonObject.get("character_image"));
 
             System.out.println("character.toString() : " + character.toString());
+
+            // 캐릭터 스킬 정보 조회
+            List<SkillInfoDto> list = new ArrayList<>();
+            JSONArray character_skill = (JSONArray) jsonObject.get("character_skill");
+
+            for (int i = 0; i < character_skill.size(); i++) {
+                JSONObject skillBody = (JSONObject) character_skill.get(i);
+
+                SkillInfoDto skillInfoDto = new SkillInfoDto();
+                skillInfoDto.setSkill_name((String) skillBody.get("skill_name"));
+                skillInfoDto.setSkill_description((String) skillBody.get("skill_description"));
+                skillInfoDto.setSkill_level((long) skillBody.get("skill_level"));
+                skillInfoDto.setSkill_effect((String) skillBody.get("skill_effect"));
+                skillInfoDto.setSkill_icon((String) skillBody.get("skill_icon"));
+
+                list.add(skillInfoDto);
+            }
+
+
+
+
 
         } catch (Exception exception) {
             System.out.println(exception);
