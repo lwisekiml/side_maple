@@ -5,6 +5,7 @@ import lombok.Data;
 @Data
 public class Character {
 
+    Long id;
     String date;
     String character_name;
     String world_name;
