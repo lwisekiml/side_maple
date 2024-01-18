@@ -1,12 +1,15 @@
 plugins {
 	id 'java'
-	id 'org.springframework.boot' version '3.2.1'
+	id 'org.springframework.boot' version '3.1.8'
 	id 'io.spring.dependency-management' version '1.1.4'
 }
 
 group = 'com.maple'
 version = '0.0.1-SNAPSHOT'
 
+// OpenJDK 64-Bit Server VM warning: Options -Xverify:none and -noverify were deprecated in JDK 13 and will likely be removed in a future release
+// 경고?(빨간글자로) 나올경우
+// 참고 : https://kim-jong-hyun.tistory.com/121
 java {
 	sourceCompatibility = '17'
 }
@@ -29,7 +32,8 @@ dependencies {
 	implementation 'com.googlecode.json-simple:json-simple:1.1.1' // import org.json.simple.JSONObject; // import org.json.simple.parser.JSONParser;
 
 	//MyBatis 추가
-	implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:2.2.0'
+	implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:3.0.0'
+	runtimeOnly 'com.mysql:mysql-connector-j' // java가 아닌 j 이다.
 
 	compileOnly 'org.projectlombok:lombok'
 	annotationProcessor 'org.projectlombok:lombok'
