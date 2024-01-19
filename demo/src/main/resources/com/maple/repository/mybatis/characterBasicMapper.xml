@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.maple.repository.mybatis.CharacterBasicMapper">
+
+<insert id="save" useGeneratedKeys="true" keyProperty="id">
+    insert into chracter_basic (date, character_name, world_name, character_gender, character_class, character_class_level, character_level, character_exp, character_exp_rate, character_guild_name, character_image)
+    values (#{date}, #{character_name}, #{world_name}, #{character_gender}, #{character_class}, #{character_class_level}, #{character_level}, #{character_exp}, #{character_exp_rate}, #{character_guild_name}, #{character_image})
+
+</insert>
+
+</mapper>

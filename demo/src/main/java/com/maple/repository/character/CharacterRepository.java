@@ -1,18 +1,20 @@
 package com.maple.repository.character;
 
 import com.maple.domain.Character;
+import com.maple.repository.mybatis.CharacterBasicMapper;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Repository;
 
-import java.util.HashMap;
-import java.util.Map;
-
+@Slf4j
 @Repository
+@RequiredArgsConstructor
 public class CharacterRepository {
 
-    private static final Map<Long, Character> store = new HashMap<>(); // static 사용
-    private static long sequence = 0L; // static 사용
+    private final CharacterBasicMapper characterBasicMapper;
 
-    public void save(Character character) {
-        character.setId(++sequence);
+    public void save(Character characterInfo) {
+        log.info("CharacterRepository save()");
+        characterBasicMapper.save(characterInfo);
     }
 }

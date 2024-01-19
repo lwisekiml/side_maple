@@ -37,6 +37,6 @@ public class CharacterService {
 
         System.out.println("character.toString() : " + character.toString());
 
-//        characterRepository.save(character);
+        characterRepository.save(character);
     }
 }
