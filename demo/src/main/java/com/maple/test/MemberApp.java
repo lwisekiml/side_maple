@@ -3,12 +3,12 @@ package com.maple.test;
 import com.maple.test.member.Grade;
 import com.maple.test.member.Member;
 import com.maple.test.member.MemberService;
-import com.maple.test.member.MemberServiceImpl;
 
 // member 실행 및 테스트
 public class MemberApp {
     public static void main(String[] args) {
-        MemberService memberService = new MemberServiceImpl();
+        AppConfig appConfig = new AppConfig();
+        MemberService memberService = appConfig.memberService();
         Member member = new Member(1L, "memberA", Grade.VIP);
         memberService.join(member);
 
