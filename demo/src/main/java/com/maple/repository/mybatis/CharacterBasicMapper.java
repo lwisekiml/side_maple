@@ -1,11 +1,11 @@
 package com.maple.repository.mybatis;
 
-import com.maple.domain.Character;
+import com.maple.domain.CharacterBasic;
 import org.apache.ibatis.annotations.Mapper;
 
 @Mapper
 public interface CharacterBasicMapper {
 
-    void save(Character characterInfo);
+    void save(CharacterBasic characterBasicInfo);
 
 }
