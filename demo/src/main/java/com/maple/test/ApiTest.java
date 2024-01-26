@@ -1,6 +1,7 @@
 package com.maple.test;
 
 import com.maple.domain.CharacterBasic;
+import com.maple.domain.CharacterStat;
 import com.maple.dto.SkillInfoDto;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -87,9 +88,8 @@ public class ApiTest {
                 list.add(skillInfoDto);
             }
 
-
-
-
+            CharacterStat characterStat = new CharacterStat(1L, "test", "ttt", list, 10);
+            System.out.println("aaaa :" + characterStat.toString());
 
         } catch (Exception exception) {
             System.out.println(exception);
