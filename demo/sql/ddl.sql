@@ -62,4 +62,49 @@ create table character_popularity
 alter table character_popularity add primary key(ocid);
 
 ----------------------------------------------------------
+create table ranking_overall
+(
+    id bigint auto_increment,
+    ocid varchar(35),
+    date varchar(25),
+    world_name varchar(20),
+    ranking BIGINT,
+    character_name varchar(50),
+    character_level BIGINT,
+    character_exp BIGINT,
+    class_name varchar(30),
+    sub_class_name varchar(30),
+    character_popularity varchar(30),
+    character_guildname varchar(30),
+    primary key (id, ocid)
+);
+
+alter table ranking_overall drop primary key, add primary key(id);
+
+insert into ranking_overall
+(
+    date,
+    world_name,
+    ranking,
+    character_name,
+    character_level,
+    character_exp,
+    class_name,
+    sub_class_name,
+    character_popularity,
+    character_guildname
+)
+values (
+           'tttt',
+           'worldname',
+           1,
+           'test',
+           2,
+           3,
+           'classname',
+           'subclassname',
+           5,
+           'guildname'
+       )
+
 
